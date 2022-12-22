@@ -7,8 +7,11 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+# Sets permissions of the GITHUB_TOKEN
 permissions:
+  # allow crawler collect data
+  issues: read
+  # allow deployment to GitHub Pages
   contents: read
   pages: write
   id-token: write
@@ -28,7 +31,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Collect data
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          #
+          env
+          echo $GITHUB_TOKEN
           #
           mkdir -p ./assets
           printf "SXD HD - by G833 ShenHua\n" | tee ./assets/README.md
