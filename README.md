@@ -7,7 +7,7 @@
 
 ## Crawler
 
-* 抓 Issue 和 Issue Comments 生成 JSON
+* 使用 Github Api 抓 Issue 和 Issue Comments 生成 JSON
 
 ## Github Pages
 
