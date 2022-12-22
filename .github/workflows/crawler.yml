@@ -31,7 +31,7 @@ jobs:
         run: |
           #
           mkdir -p ./assets
-          printf "# 神仙道\n> ꧁꫞神话꫞꧂" | tee ./assets/README.md
+          printf "SXD HD - by G833 ShenHua\n" | tee ./assets/README.md
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
