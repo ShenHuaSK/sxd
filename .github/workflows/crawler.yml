@@ -31,12 +31,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Collect data
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # env:
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          #
-          env
-          echo $GITHUB_TOKEN
+          # 在每个工作流程运行开始时，GitHub 会自动创建唯一的 GITHUB_TOKEN 机密以在工作流程中使用。 可以使用 GITHUB_TOKEN 在工作流程运行中进行身份验证。
+          # [自动令牌身份验证](https://docs.github.com/zh/actions/security-guides/automatic-token-authentication)
+          # echo $GITHUB_TOKEN
           #
           mkdir -p ./assets
           printf "SXD HD - by G833 ShenHua\n" | tee ./assets/README.md
