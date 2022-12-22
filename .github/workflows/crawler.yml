@@ -30,6 +30,7 @@ jobs:
       - name: Collect data
         run: |
           #
+          mkdir -p ./assets
           printf "# 神仙道\n> ꧁꫞神话꫞꧂" | tee ./assets/README.md
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
