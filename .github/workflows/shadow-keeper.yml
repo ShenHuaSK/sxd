@@ -26,11 +26,17 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
+        node-version: [18.x]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
           ref: shadow-keeper
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Prepare
@@ -45,17 +51,17 @@ jobs:
           # echo $GITHUB_TOKEN // ${{ secrets.GITHUB_TOKEN }}
           #
           printf "{}" | tee ./site/public/api/mock.json
-      - name: Compose assets
+      - name: Run build site
         run: |
-          mkdir -p ./assets ./assets/api
-          # cp -r ./jekyll/_site/ ./assets
-          cp -r ./api/ ./assets/api
-          printf "SXD HD - by G833 ShenHua\n" | tee ./assets/index.html
+          pushd site
+          npm install
+          npm run build
+          popd
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: './assets'
+          path: './site/dist'
 
   # Deployment job
   deploy:
