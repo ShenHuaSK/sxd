@@ -27,19 +27,43 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        if: github.ref_type == 'branch' && github.ref_name == 'crawler'
         uses: actions/checkout@v3
+      - name: Checkout crawler
+        if: github.ref_type != 'branch' || github.ref_name != 'crawler'
+        uses: actions/checkout@v3
+        with:
+          ref: crawler
       - name: Setup Pages
         uses: actions/configure-pages@v2
-      - name: Collect data
-        # env:
-        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Prepare
         run: |
+          # 站点 - 首页/隐私政策/用户协议等
+          mkdir -p ./jekyll
+          # 接口
+          mkdir -p ./api
+      - name: Jekyll new project
+        run: |
+          echo "Jekyll new project"
+      - name: Collect data
+        run: |
+          #
           # 在每个工作流程运行开始时，GitHub 会自动创建唯一的 GITHUB_TOKEN 机密以在工作流程中使用。 可以使用 GITHUB_TOKEN 在工作流程运行中进行身份验证。
           # [自动令牌身份验证](https://docs.github.com/zh/actions/security-guides/automatic-token-authentication)
-          # echo $GITHUB_TOKEN
+          # [上下文](https://docs.github.com/en/actions/learn-github-actions/contexts)
+          # echo $GITHUB_TOKEN // ${{ secrets.GITHUB_TOKEN }}
           #
-          mkdir -p ./assets
-          printf "SXD HD - by G833 ShenHua\n" | tee ./assets/README.md
+      # - name: Build with Jekyll
+      #   uses: actions/jekyll-build-pages@v1
+      #   with:
+      #     source: ./jekyll
+      #     destination: ./jekyll/_site
+      - name: Compose assets
+        run: |
+          mkdir -p ./assets ./assets/api
+          # cp -r ./jekyll/_site/* ./assets
+          cp -r ./api/* ./assets/api
+          printf "SXD HD - by G833 ShenHua\n" | tee ./assets/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
