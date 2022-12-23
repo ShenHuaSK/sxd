@@ -5,13 +5,19 @@
 * Issue - 提供内容分类
 * Issue Comments - 提供内容
 
-## Vue3 + Vite
+## TypeScript
+
+* [开始一个项目](https://www.typescriptlang.org/zh/docs/bootstrap)
+
+## Website
+
+> [Vue](https://vuejs.org/) - Vue3 + Vite
 
 * 官网
 * 首页、隐私政策、用户协议等
 
 ```shell
-# 创建前端站点
+# 新建项目
 npm init vue@latest
 #
 pushd site
@@ -25,13 +31,18 @@ popd
 
 ## Crawler
 
+> [oclif](https://oclif.io/docs/introduction.html)
+
 * 使用 Github Api 抓 Issue 和 Issue Comments 生成 JSON
 
 ```shell
+# 新建项目
+npx oclif generate crawler
 #
-pushd site crawler
+pushd crawler
 #
-
+npm run dev -- --spider web
+npm run dev -- --spider api
 #
 popd
 ```
