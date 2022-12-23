@@ -7,7 +7,7 @@
 
 ## Vue3 + Vite
 
-* 静态站点
+* 官网
 * 首页、隐私政策、用户协议等
 
 ```shell
@@ -26,6 +26,15 @@ popd
 ## Crawler
 
 * 使用 Github Api 抓 Issue 和 Issue Comments 生成 JSON
+
+```shell
+#
+pushd site crawler
+#
+
+#
+popd
+```
 
 ## Github Pages
 
