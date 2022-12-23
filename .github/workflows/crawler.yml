@@ -63,7 +63,6 @@ jobs:
           mkdir -p ./assets ./assets/api
           # cp -r ./jekyll/_site/ ./assets
           cp -r ./api/ ./assets/api
-          cp README.md ./assets
           printf "SXD HD - by G833 ShenHua\n" | tee ./assets/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
