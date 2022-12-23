@@ -53,9 +53,8 @@ jobs:
           #
           printf "{}" | tee ./site/public/api/mock.json
       - name: Run build site
-        env:
-          PUBLIC_PATH: ${GITHUB_REPOSITORY#GITHUB_REPOSITORY_OWNER}
         run: |
+          export PUBLIC_PATH=/$(echo $GITHUB_REPOSITORY | sed "s|$GITHUB_REPOSITORY_OWNER/||g")
           echo "PUBLIC_PATH=${PUBLIC_PATH}"
           pushd site
           npm install
