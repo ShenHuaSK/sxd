@@ -35,13 +35,7 @@ jobs:
         uses: actions/configure-pages@v2
       - name: Prepare
         run: |
-          # 站点 - 首页/隐私政策/用户协议等
-          mkdir -p ./jekyll
-          # 接口
-          mkdir -p ./api
-      - name: Jekyll new project
-        run: |
-          echo "Jekyll new project"
+          mkdir -p ./site/public/api
       - name: Collect data
         run: |
           #
@@ -50,11 +44,7 @@ jobs:
           # [上下文](https://docs.github.com/en/actions/learn-github-actions/contexts)
           # echo $GITHUB_TOKEN // ${{ secrets.GITHUB_TOKEN }}
           #
-      # - name: Build with Jekyll
-      #   uses: actions/jekyll-build-pages@v1
-      #   with:
-      #     source: ./jekyll
-      #     destination: ./jekyll/_site
+          printf "{}" | tee ./site/public/api/mock.json
       - name: Compose assets
         run: |
           mkdir -p ./assets ./assets/api
