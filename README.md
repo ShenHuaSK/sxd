@@ -13,6 +13,14 @@
 ```shell
 # 创建前端站点
 npm init vue@latest
+#
+pushd site
+#
+npm install
+npm run dev
+npm run build
+#
+popd
 ```
 
 ## Crawler
