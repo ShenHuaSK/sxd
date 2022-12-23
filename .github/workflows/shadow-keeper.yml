@@ -21,7 +21,11 @@ concurrency:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
+    name: Build job on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -65,10 +69,14 @@ jobs:
 
   # Deployment job
   deploy:
+    name: Deployment job on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Deploy to GitHub Pages
