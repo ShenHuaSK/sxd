@@ -50,10 +50,6 @@ npx tsc --init
 npm install --save-dev ts-node
 npm install --save-dev tslib
 npm install --save-dev @types/node
-#
-npm install --save-dev eslint @types/eslint
-npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
-npx eslint --init
 ```
 
 ```shell
