@@ -5,7 +5,11 @@
   "author": "ShenHuaSK",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf ./dist/ ./exec/",
+    "help": "ts-node ./src/cli.ts -h",
+    "dev": "ts-node ./src/cli.ts",
+    "build": "npm run clean && tsc",
+    "bundle": "npm run build && pkg . --out-dir ./exec/"
   },
   "devDependencies": {
     "@types/eslint": "^8.4.10",
@@ -17,8 +21,14 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.6.0",
     "eslint-plugin-promise": "^6.1.1",
+    "pkg": "^5.8.0",
+    "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "tslib": "^2.4.1",
     "typescript": "^4.9.4"
+  },
+  "dependencies": {
+    "date-fns": "^2.29.3",
+    "lodash": "^4.17.21"
   }
 }
