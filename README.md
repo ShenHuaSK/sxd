@@ -19,6 +19,9 @@
 ```shell
 # 新建项目
 npm init vue@latest
+```
+
+```shell
 #
 pushd site
 #
@@ -37,7 +40,29 @@ popd
 
 ```shell
 # 新建项目
-npx oclif generate crawler
+mkdir -p crawler
+cd crawler
+npm init
+#
+npm install --save-dev typescript
+npx tsc --init
+#
+npm install --save-dev ts-node
+npm install --save-dev tslib
+npm install --save-dev @types/node
+#
+npm install --save-dev eslint @types/eslint
+npm install --save-dev @typescript-eslint/parser @typescript-eslint/eslint-plugin
+npx eslint --init
+```
+
+```shell
+npm install --save-dev rimraf pkg
+npm install commander axios cheerio
+npm install date-fns lodash
+```
+
+```shell
 #
 pushd crawler
 #
