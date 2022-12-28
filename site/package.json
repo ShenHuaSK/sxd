@@ -1,6 +1,8 @@
 {
   "name": "site",
   "version": "0.0.1",
+  "description": "",
+  "author": "ShenHuaSK",
   "private": true,
   "scripts": {
     "dev": "vite",
